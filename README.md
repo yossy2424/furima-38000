@@ -14,29 +14,29 @@ has_many :items
 has_many :purchases
 
 ## itemsテーブル
-| name          | string     | option                        |
-| ------------- | ---------- | ----------------------------- |
-| name          | string     | null: false                   |
-| explanation   | text       | null: false                   |
-| condition_id  | integer    | null: false                   |
-| price         | integer    | null: false                   |
-| category_id   | integer    | null: false                   |
-| user          | references | null: false foreign_key :true |
-| prefecture_id | integer    | null: false                   |
-| charge_id     | integer    | null: false                   |
-| days_id       | integer    | null: false                   |
+| name             | string     | option                        |
+| ---------------- | ---------- | ----------------------------- |
+| name             | string     | null: false                   |
+| explanation      | text       | null: false                   |
+| condition_id     | integer    | null: false                   |
+| price            | integer    | null: false                   |
+| category_id      | integer    | null: false                   |
+| user             | references | null: false foreign_key :true |
+| prefecture_id    | integer    | null: false                   |
+| charge_id        | integer    | null: false                   |
+| delivery_time_id | integer    | null: false                   |
 
-belong_to :user
+belongs_to :user
 has_one :purchase
 
 ## purchasesテーブル
 | name | string     | option                        |
 | ---- | ---------- | ----------------------------- |
-| user | reference  | null: false foreign_key :true |
-| name | references | null: false foreign_key :true |
+| user | references | null: false foreign_key :true |
+| item | references | null: false foreign_key :true |
 
-belong_to :user
-belong_to :item
+belongs_to :user
+belongs_to :item
 has_one :address
 
 ## addressesテーブル
@@ -46,7 +46,7 @@ has_one :address
 | city          | string  | null: false |
 | address       | string  | null: false |
 | prefecture_id | integer |             |
-| building      | integer |             |
-| phone_number  | integer | null:false  |
+| building      | string  |             |
+| phone_number  | string  | null:false  |
 
-belong_to :purchase
+belongs_to :purchase
