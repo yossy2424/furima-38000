@@ -45,9 +45,9 @@ has_one :address
 | postal_code   | string     | null: false                   |
 | city          | string     | null: false                   |
 | address       | string     | null: false                   |
-| prefecture_id | integer    |                               |
+| prefecture_id | integer    | null: false                   |
 | building      | string     |                               |
 | phone_number  | string     | null:false                    |
-| purchase_id   | references | null: false foreign_key :true |
+| purchase      | references | null: false foreign_key :true |
 
 belongs_to :purchase
