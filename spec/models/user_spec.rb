@@ -83,6 +83,44 @@ describe 'ユーザー新規登録' do
       @user.valid?
       expect(@user.errors.full_messages).to include("Password is too long (maximum is 128 characters)")
     end
+    it 'パスワードは英字のみでは保存できない' do
+      @user.password = 'aaaaaaaa'
+      @user.password_confirmation = 'aaaaaaaa'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Password パスワードには半角英字と半角数字の両方を含めて設定してください")
+    end
+    it 'パスワードは数字のみでは保存できない' do
+      @user.password ='11111111'
+      @user.password_confirmation = '11111111'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Password パスワードには半角英字と半角数字の両方を含めて設定してください")
+    end
+    it 'パスワードは全角では保存できない' do
+      @user.password = 'ああああああ'
+      @user.password_confirmation = 'ああああああ'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Password パスワードには半角英字と半角数字の両方を含めて設定してください")
+    end
+    it 'last_nameは半角文字では保存できない' do
+      @user.last_name = 'aaaa'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Last name 全角ひらがな、全角カタカナ、漢字で入力して下さい")
+    end
+    it 'first_nameは半角文字では保存できない' do
+      @user.first_name = 'aaaa'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("First name 全角ひらがな、全角カタカナ、漢字で入力して下さい")
+    end
+    it 'kana_last_nameは平仮名では保存できない' do
+      @user.kana_last_name = 'あああああ'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Kana last name 全角カタカナで入力して下さい")
+    end
+    it 'kana_first_nameは平仮名では保存できない' do
+      @user.kana_first_name = 'あああああ'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Kana first name 全角カタカナで入力して下さい")
+    end
   end
 end
 end
