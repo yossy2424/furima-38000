@@ -7,6 +7,7 @@ class Item < ApplicationRecord
   belongs_to :prefecture
   has_one_attached :image
   belongs_to :user
+  has_one :purchase
 
   #空の投稿を保存できないようにする
   validates :name,          presence: true
