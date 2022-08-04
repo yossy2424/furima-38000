@@ -4,7 +4,6 @@ class PurchasesController < ApplicationController
   before_action :prevent_url, only: [:index, :create]
 
   def index
-    @purchase = Purchase.new
     @purchase_address = PurchaseAddress.new	
   end
 
@@ -26,7 +25,6 @@ class PurchasesController < ApplicationController
   end
 
   def prevent_url
-    @item = Item.find(params[:item_id])
     if @item.user_id == current_user.id || @item.purchase != nil
       redirect_to root_path
     end
