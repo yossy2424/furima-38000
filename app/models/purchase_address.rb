@@ -11,7 +11,7 @@ class PurchaseAddress
     validates :address, presence: true
     validates :phone_number, presence: true, format: {with: /\A\d{10,11}\z/, message: "is invalid. Include hyphen(-)"}
   end
-    validates :prefecture_id, presence: true,numericality: {other_than: 0, message: "can't be blank"}
+    validates :prefecture_id, numericality: {other_than: 1, message: "can't be blank"}
 
     def save
       # 寄付情報を保存し、変数donationに代入する
