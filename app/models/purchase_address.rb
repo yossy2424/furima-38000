@@ -5,13 +5,13 @@ class PurchaseAddress
   with_options presence: true do
     validates :user_id, presence: true
     validates :item_id, presence: true
-    validates :postal_code, presence: true, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
+    validates :postal_code, presence: true, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "にはハイフン(-)を含んでください"}
     validates :city, presence: true
     validates :token, presence: true
     validates :address, presence: true
-    validates :phone_number, presence: true, format: {with: /\A\d{10,11}\z/, message: "is invalid. Include hyphen(-)"}
+    validates :phone_number, presence: true, format: {with: /\A\d{10,11}\z/, message: "にはハイフン(-)を含んでください"}
   end
-    validates :prefecture_id, numericality: {other_than: 1, message: "can't be blank"}
+    validates :prefecture_id, numericality: {other_than: 1, message: "を入力してください"}
 
     def save
       # 寄付情報を保存し、変数donationに代入する

@@ -48,17 +48,17 @@ RSpec.describe PurchaseAddress, type: :model do
       it 'phone_numberは、9桁以下では購入できないこと' do
         @purchase_address.phone_number = '123456789'
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Phone number is invalid. Include hyphen(-)")
+        expect(@purchase_address.errors.full_messages).to include("Phone number にはハイフン(-)を含んでください")
       end
       it 'phone_numberは、12桁以上では購入できないこと' do
         @purchase_address.phone_number = '1234567890123'
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Phone number is invalid. Include hyphen(-)")
+        expect(@purchase_address.errors.full_messages).to include("Phone number にはハイフン(-)を含んでください")
       end
       it 'phone_numberに半角数字以外が含まれている場合は購入できないこと' do
         @purchase_address.phone_number = '１２３４５６７８９０１'
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Phone number is invalid. Include hyphen(-)")
+        expect(@purchase_address.errors.full_messages).to include("Phone number にはハイフン(-)を含んでください")
       end
       it 'addressが空だと保存できないこと' do
         @purchase_address.address = ''
