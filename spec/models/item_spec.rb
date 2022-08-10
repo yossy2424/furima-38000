@@ -32,27 +32,27 @@ RSpec.describe Item, type: :model do
       it 'カテゴリーに「---」が選択されている場合は出品できない' do
         @item.category_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category can't be blank")
+        expect(@item.errors.full_messages).to include("Category を入力してください")
       end
       it '商品の状態に「---」が選択されている場合は出品できない' do
         @item.condition_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Condition can't be blank")
+        expect(@item.errors.full_messages).to include("Condition を入力してください")
       end
       it '配送料の負担に「---」が選択されている場合は出品できない' do
         @item.charge_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Charge can't be blank")
+        expect(@item.errors.full_messages).to include("Charge を入力してください")
       end
       it '発送元の地域に「---」が選択されている場合は出品できない' do
         @item.prefecture_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture can't be blank")
+        expect(@item.errors.full_messages).to include("Prefecture を入力してください")
       end
       it '発送までの日数に「---」が選択されている場合は出品できない' do
         @item.delivery_time_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Delivery time can't be blank")
+        expect(@item.errors.full_messages).to include("Delivery time を入力してください")
       end
       it 'priceが空では登録できない' do
         @item.price = ''
