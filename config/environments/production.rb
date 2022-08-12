@@ -19,8 +19,8 @@ Rails.application.configure do
   # config.require_master_key = true
 
   ActionCable.server.config.disable_request_forgery_protection = true
-  config.action_cable.url = "wss://【furima-380002-38000】.herokuapp.com/cable" 
-  config.action_cable.allowed_request_origins = ['https://【furima-380002-38000】.herokuapp.com', 'http://【furima-380002-38000】.herokuapp.com']
+  config.action_cable.url = "wss://furima-380002-38000.herokuapp.com/cable" 
+  config.action_cable.allowed_request_origins = ['https://furima-380002-38000.herokuapp.com', 'http://furima-380002-38000.herokuapp.com']
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
